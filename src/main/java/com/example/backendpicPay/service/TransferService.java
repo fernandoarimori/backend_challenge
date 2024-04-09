@@ -36,7 +36,7 @@ public class TransferService {
             store.recieve(value);
             picClientRepository.save(client);
             picClientRepository.save(store);
-            var uri = uriComponentsBuilder.path("/transfer/{id}").buildAndExpand(postedTransfer).toUri()
+            var uri = uriComponentsBuilder.path("/transfer/{id}").buildAndExpand(postedTransfer).toUri();
             return ResponseEntity.created(uri).body(new TransferDTO(postedTransfer));
         }
         return ResponseEntity.badRequest().build();
