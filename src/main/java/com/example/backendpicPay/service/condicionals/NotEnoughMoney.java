@@ -12,8 +12,7 @@ import java.util.BitSet;
 public class NotEnoughMoney implements RulerList{
     @Override
     public void budinessRule(PicClient store, PicClient client, TransferNotify transferNotify) {
-        var zeroValue = new BigDecimal(0);
-        if (client.getWallet().compareTo(zeroValue)==0 ||client.getWallet().compareTo(zeroValue)==-1){
+        if (client.getWallet().compareTo(transferNotify.getValue())==-1){
             throw new NotEnoughMoneyException("Not enough money");
         }
         transferNotify.setAllowed(true);

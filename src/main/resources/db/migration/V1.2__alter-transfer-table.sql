@@ -1,0 +1,1 @@
+ALTER TABLE tb_transfer ADD COLUMN is_allowed boolean;

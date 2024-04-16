@@ -13,8 +13,8 @@ import org.springframework.data.annotation.CreatedDate;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity
-@Table
+@Entity(name = "Transfer")
+@Table(name = "tb_transfer")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -27,10 +27,9 @@ public class TransferNotify {
     @NotNull
     private BigDecimal value;
     @NotNull
-    private String from;
+    private String buyClient;
     @NotNull
-    private String to;
-    @CreatedDate
+    private String sellStore;
     private LocalDateTime created;
     private Boolean isAllowed;
 
@@ -44,8 +43,9 @@ public class TransferNotify {
 
     public TransferNotify(TransferDTO dto) {
         this.value = dto.value();
-        this.from = dto.from();
-        this.to = dto.to();
+        this.buyClient = dto.buyClient();
+        this.sellStore = dto.sellStore();
+        this.created = LocalDateTime.now();
     }
 }
 

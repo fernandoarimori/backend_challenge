@@ -3,6 +3,7 @@ package com.example.backendpicPay.model;
 import com.example.backendpicPay.model.dto.PostPicClientDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
@@ -44,13 +45,14 @@ public class PicClient {
         this.register = dto.register();
         this.email = dto.email();
         this.password = dto.password();
+        this.type = dto.type();
         this.wallet = dto.wallet();}
 
     public void pays(BigDecimal value) {
-        this.wallet.subtract(value);
+        this.wallet = this.wallet.subtract(value);
     }
 
     public void recieve(BigDecimal value) {
-        this.wallet.add(value);
+        this.wallet = this.wallet.add(value);
     }
 }

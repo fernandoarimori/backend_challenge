@@ -1,0 +1,1 @@
+ALTER TABLE tb_transfer MODIFY id tinyint NOT NULL AUTO_INCREMENT;

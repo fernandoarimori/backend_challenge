@@ -4,6 +4,7 @@ import com.example.backendpicPay.model.PicClient;
 import com.example.backendpicPay.model.dto.PostPicClientDTO;
 import com.example.backendpicPay.model.dto.ResponseUserDTO;
 import com.example.backendpicPay.model.repository.PicClientRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ public class ClientService {
     @Autowired
     private PicClientRepository clientRepository;
 
+    @Transactional
     public ResponseEntity postUser(PostPicClientDTO dto, UriComponentsBuilder uriComponentsBuilder) {
         PicClient newPost = new PicClient(dto);
         var uri = uriComponentsBuilder.path("/user/{id}").buildAndExpand(newPost.getId()).toUri();

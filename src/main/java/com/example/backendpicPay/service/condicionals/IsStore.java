@@ -7,12 +7,14 @@ import com.example.backendpicPay.model.TransferNotify;
 import org.springframework.stereotype.Component;
 
 @Component
-public class IsStore implements RulerList{
+public class IsStore implements RulerList {
     @Override
     public void budinessRule(PicClient store, PicClient client, TransferNotify transferNotify) {
-        if (store.getType()== PicClinentType.STORE){
-            transferNotify.setAllowed(true);
+        if (store.getType() == PicClinentType.USER && store.getType()!=client.getType()) {
+            throw new NotStoreException("Store account can't pay");
         }
-        throw new NotStoreException("Is not a Store account");
+        transferNotify.setAllowed(true);
+
+
     }
 }
